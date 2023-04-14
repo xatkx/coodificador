@@ -8,11 +8,6 @@ let list = []
 const allMayus = /[A-Z]{1,}/
 const emcriptTrue = /enter{1,}|imes{1,}|ai{1,}|ober{1,}|ufat{,1}/
 const listBlank = /[a-z0-9]/
-// buscar: 'e', remplace: 'enter' },
-// { buscar: 'i', remplace: 'imes' },
-// { buscar: 'a', remplace: 'ai' },
-// { buscar: 'o', remplace: 'ober' },
-// { buscar: 'u', remplace: 'ufat' },
 
 // funt
 const init = () => {
