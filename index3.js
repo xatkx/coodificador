@@ -86,7 +86,7 @@ const emcript = msj => {
 const desemcript = msj => {
     let cript = msj
     const llave = [
-        { remplacbuscar: 'enter' },
+        { remplace: 'e',buscar: 'enter' },
         { remplace: 'i', buscar: 'imes' },
         { remplace: 'a', buscar: 'ai' },
         { remplace: 'o', buscar: 'ober' },
@@ -127,7 +127,7 @@ const boxHandle = event => {
             text.innerText = emcript(text.innerText)
             pass = true
         }, 5000)
-    } else if (button.classList.contains('delete') && pass) {
+    } else if (button.classList.contains('delete')) {
         let id = button.getAttribute('id')
         delOneLocal(id)
         listRender(getLocal())
