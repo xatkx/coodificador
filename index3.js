@@ -4,9 +4,18 @@ const box = document.querySelector('.cajita');
 const textArea = document.querySelector('.area')
 // var
 let list = []
+// regex
+const allMayus = /[A-Z]{1,}/
+const emcriptTrue = /enter{1,}|imes{1,}|ai{1,}|ober{1,}|ufat{,1}/
+// buscar: 'e', remplace: 'enter' },
+// { buscar: 'i', remplace: 'imes' },
+// { buscar: 'a', remplace: 'ai' },
+// { buscar: 'o', remplace: 'ober' },
+// { buscar: 'u', remplace: 'ufat' },
+
 // funt
 const init = () => {
-    localStorage.getItem('emcript') ? null : localStorage.setItem('emcript', '[]');
+    localStorage.getItem('emcript') ? console.log('local store initializada...') : localStorage.setItem('emcript', '[]');
 
     listRender(getLocal())
 }
@@ -28,6 +37,7 @@ const delOneLocal = id => {
     })
     localStorage.setItem('emcript', JSON.stringify([...list]))
 }
+////
 const msjHTML = obj => {
     const messeger = document.createElement('div')
     messeger.innerHTML = `
@@ -90,8 +100,19 @@ const desemcript = msj => {
 ///
 const submitHandle = event => {
     event.preventDefault()
-    if (false) return
-    const emcriptado = emcript(textArea.value)
+    const doc = textArea.value
+    let emcriptado;
+    if (allMayus.test(doc))
+    {
+        console.log()
+        return
+    } else if(emcriptTrue.test(doc))
+    {
+         emcriptado = doc
+    } else {
+
+        emcriptado = emcript(doc)
+    }
 
 
     // crea una funcion que tranforme el msj en un obj
@@ -121,10 +142,7 @@ const boxHandle = event => {
 // handler
 const app = () => {
     document.addEventListener('DOMContentLoaded', init)
-
-
     form.addEventListener('submit', submitHandle)
-
     box.addEventListener('click', boxHandle)
 }
-app()
+app() // application
