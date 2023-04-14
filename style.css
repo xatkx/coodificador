@@ -13,9 +13,6 @@ body > h1 {
     text-align: center;
     text-decoration: line-through;
 }
-main {
-    /* background: red; */
-}
 
 .container {
     width: 80%;
@@ -26,10 +23,6 @@ main {
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap: 1rem;
-}
-
-.row div {
-
 }
 
 /*  form */
@@ -70,10 +63,6 @@ main {
     margin: 0.5rem;
     max-width: 500px;
     word-wrap: break-word;
-}
-
-.msj .botonera {
-
 }
 
 .botonera input {

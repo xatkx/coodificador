@@ -1,7 +1,6 @@
 // inputs
 const form = document.querySelector('#formulario');
 const box = document.querySelector('.cajita');
-
 const textArea = document.querySelector('.area')
 // var
 let list = []
@@ -11,7 +10,6 @@ const init = () => {
 
     listRender(getLocal())
 }
-
 const msjToObj = msj => {
     return { messeger: msj, id: Date.now() }
 }
@@ -29,10 +27,7 @@ const delOneLocal = id => {
         }
     })
     localStorage.setItem('emcript', JSON.stringify([...list]))
-
-
 }
-
 const msjHTML = obj => {
     const messeger = document.createElement('div')
     messeger.innerHTML = `
@@ -45,11 +40,9 @@ const msjHTML = obj => {
         <input type="button" value="delete" class="delete" id="${obj.id}">
     </div>
 </div>
-    
     `
     return messeger
 }
-
 const listRender = list => {
 
     while (box.firstChild) {
@@ -61,12 +54,10 @@ const listRender = list => {
         box.appendChild(msjHTML(element))
     });
 }
-
 /// codificador
 const codificador = ({ text, buscar, remplace }) => {
     return text.replace(RegExp(`${buscar}`, 'g'), () => remplace)
 }
-
 const emcript = msj => {
     let cript = msj
     const llave = [
@@ -82,7 +73,6 @@ const emcript = msj => {
     }
     return cript
 }
-
 const desemcript = msj => {
     let cript = msj
     const llave = [
@@ -92,14 +82,12 @@ const desemcript = msj => {
         { remplace: 'o', buscar: 'ober' },
         { remplace: 'u', buscar: 'ufat' },
     ]
-
     for (let i = 0; i < llave.length; i++) {
         cript = codificador({ ...llave[i], text: cript })
     }
     return cript
 }
 ///
-
 const submitHandle = event => {
     event.preventDefault()
     if (false) return
@@ -115,11 +103,8 @@ const submitHandle = event => {
 }
 let pass = true
 const boxHandle = event => {
-
     let button = event.target
-    const text = event.target.parentElement.parentElement.querySelector('p')
-    
-
+    const text = event.target.parentElement.parentElement.querySelector('p')  
     if (button.classList.contains('desemcript') && pass) {
         text.innerText = desemcript(text.innerText)
         pass = false
@@ -133,10 +118,7 @@ const boxHandle = event => {
         listRender(getLocal())
     }
 }
-
-
 // handler
-
 const app = () => {
     document.addEventListener('DOMContentLoaded', init)
 
@@ -146,19 +128,3 @@ const app = () => {
     box.addEventListener('click', boxHandle)
 }
 app()
-
-
-
-// const text = 'hola gente como esta todo hola '
-// const obj = {
-//     text: text,
-//     buscar: 'hola',
-//     remplace: 'kedwin'
-// }
-
-// La letra "e" es convertida para "enter"
-// La letra "i" es convertida para "imes"
-// La letra "a" es convertida para "ai"
-// La letra "o" es convertida para "ober"
-// La letra "u" es convertida para "ufat"
-
