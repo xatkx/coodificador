@@ -7,6 +7,7 @@ let list = []
 // regex
 const allMayus = /[A-Z]{1,}/
 const emcriptTrue = /enter{1,}|imes{1,}|ai{1,}|ober{1,}|ufat{,1}/
+const listBlank = /[a-z0-9]/
 // buscar: 'e', remplace: 'enter' },
 // { buscar: 'i', remplace: 'imes' },
 // { buscar: 'a', remplace: 'ai' },
@@ -104,9 +105,16 @@ const submitHandle = event => {
     let emcriptado;
     if (allMayus.test(doc))
     {
-        console.log()
         return
-    } else if(emcriptTrue.test(doc))
+    } else if(!listBlank.test(doc))
+    {
+        form.reset()
+        textArea.placeholder = 'char invalid'
+        setTimeout(() => textArea.placeholder = 'Message...',3000)
+        return
+    }
+    
+    if(emcriptTrue.test(doc))
     {
          emcriptado = doc
     } else {
