@@ -100,6 +100,9 @@ const submitHandle = event => {
     let emcriptado;
     if (allMayus.test(doc))
     {
+        form.reset()
+        textArea.placeholder = 'char MAYUS invalid'
+        setTimeout(() => textArea.placeholder = 'Message...',3000)
         return
     } else if(!listBlank.test(doc))
     {
