@@ -6,13 +6,12 @@ const textArea = document.querySelector('.area')
 let list = []
 // regex
 const allMayus = /[A-Z]{1,}/
-const emcriptTrue = /enter{1,}|imes{1,}|ai{1,}|ober{1,}|ufat{,1}/
+const emcriptTrue = /enter{1,}|imes{1,}|ai{1,}|ober{1,}|ufat{1,}/
 const listBlank = /[a-z0-9]/
 
 // funt
 const init = () => {
     localStorage.getItem('emcript') ? console.log('local store initializada...') : localStorage.setItem('emcript', '[]');
-
     listRender(getLocal())
 }
 const msjToObj = msj => {
@@ -120,7 +119,6 @@ const submitHandle = event => {
         emcriptado = emcript(doc)
     }
 
-
     // crea una funcion que tranforme el msj en un obj
     //console.log(msjToObj(textArea.value))
     saveLocal(msjToObj(emcriptado))
@@ -132,11 +130,13 @@ let pass = true
 const boxHandle = event => {
     let button = event.target
     const text = event.target.parentElement.parentElement.querySelector('p')  
-    if (button.classList.contains('desemcript') && pass) {
-        text.innerText = desemcript(text.innerText)
+    if (button.classList.contains('desemcript')) {
+
+        emcriptTrue.test(text.innerText) ? text.innerText = desemcript(text.innerText): null;
+        console.log(text.innerText)
         pass = false
         setTimeout(() => {
-            text.innerText = emcript(text.innerText)
+            emcriptTrue.test(text.innerText) ? null : text.innerText = emcript(text.innerText);
             pass = true
         }, 5000)
     } else if (button.classList.contains('delete')) {
