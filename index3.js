@@ -7,7 +7,7 @@ let list = []
 // regex
 const allMayus = /[A-Z]{1,}/
 const emcriptTrue = /enter{1,}|imes{1,}|ai{1,}|ober{1,}|ufat{1,}/
-const listBlank = /^[a-z0-9]+$/
+const listBlank = /^[a-z0-9\s]+$/
 
 // funt
 const init = () => {
