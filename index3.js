@@ -14,7 +14,7 @@ const init = () => {
 const msjToObj = msj => {
     return { messeger: msj, id: Date.now() }
 }
-// crud
+// crud klklk
 const getLocal = () => JSON.parse(localStorage.getItem('emcript'))
 const saveLocal = obj => {
     const list = getLocal()
