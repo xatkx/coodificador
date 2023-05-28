@@ -2,13 +2,10 @@
 const form = document.querySelector('#formulario');
 const box = document.querySelector('.cajita');
 const textArea = document.querySelector('.area')
-// var
-let list = []
 // regex
-const allMayus = /[A-Z]{1,}/
-const emcriptTrue = /enter{1,}|imes{1,}|ai{1,}|ober{1,}|ufat{1,}/
+const allMayus = /[A-Z]+/
+const emcriptTrue = /enter+|imes+|ai+|ober+|ufat+/
 const listBlank = /^[a-z0-9\s]+$/
-
 // funt
 const init = () => {
     localStorage.getItem('emcript') ? console.log('local store initializada...') : localStorage.setItem('emcript', '[]');
@@ -49,12 +46,12 @@ const msjHTML = obj => {
     return messeger
 }
 const listRender = list => {
-
+    //limpia el html
     while (box.firstChild) {
         box.firstChild.remove()
     }
 
-
+    //
     list.forEach(element => {
         box.appendChild(msjHTML(element))
     });
